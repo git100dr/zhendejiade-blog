@@ -1,0 +1,16 @@
+---
+title: 第三天 发现一个新闻聚合的好工具
+date: '2025-8-13'
+tags: ['自说自画', '建站', '笔记', '新闻']
+draft: false
+summary: Day 3 发现一个新闻聚合的好工具News now，感觉加上。
+---
+
+**新闻聚合小工具**
+
+1. Clone github：https://github.com/ourongxing/newsnow# 到自己git仓库；
+2. vercel中新建一个newsnow项目，默认框架，导入github 的上述仓库；
+3. Vercel中newsnow项目设置中添加子域名：news.你的域名；同时根据要求在cloudflare中添加两条DNS记录：TXT记录_vercel和CNAME别名记录；
+4. 修改Next.js的blog主页，添加导向上述子域名的链接，data/blog目录的headerNavLinks.ts中添加以下链接地址：
+    ```js
+    { href: 'https://new.你的域名', title: 'News now' }
