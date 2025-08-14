@@ -38,16 +38,8 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
   const params = await props.params
   const tag = decodeURI(params.tag)
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
-  //   const filteredPosts = allCoreContent(
-  //     sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
-  //   )
   const filteredPosts = allCoreContent(
-    sortPosts(
-      allBlogs.filter((post) => {
-        // 确保 post.tags 存在，并且包含了解码后的标签
-        return post.tags && post.tags.includes(tag)
-      })
-    )
+    sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))
   )
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
   const initialDisplayPosts = filteredPosts.slice(0, POSTS_PER_PAGE)
