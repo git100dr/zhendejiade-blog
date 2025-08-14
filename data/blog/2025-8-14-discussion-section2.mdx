@@ -6,88 +6,95 @@ draft: false
 summary: Day 4 采用Firebase免费authentication和firestore database实现用户注册和匿名评论功能
 ---
 
-
 **Firebase实现用户注册和评论功能**
 
 当前静态托管（如 Vercel 的免费套餐）无法直接运行后端服务器和数据库，需要采用一种无服务器（Serverless）或第三方服务的方式来实现。前面第二天已经尝试采用Github自带的Giscus评论系统，虽然可用但是需要github账号登录才能评论，不便于快速评论，下面尝试采用Firebase免费authentication和firestore database实现用户注册和匿名评论功能：
 
-**实现步骤**： 
+**实现步骤**：
 
 1. **用户注册:**
 
 2. **匿名评论**
-* 登录谷歌账号新建一个firebase项目：https://firebase.google.com/ ，名称自拟； 
-* 启用匿名访问：进入项目，Authentication板块中登录方法添加“匿名”；
-* 为项目添加一个web应用用于评论功能：如web_comments；
-* 进入应用后可查看firebase安装和配置信息：
+
+- 登录谷歌账号新建一个firebase项目：https://firebase.google.com/ ，名称自拟；
+- 启用匿名访问：进入项目，Authentication板块中登录方法添加“匿名”；
+- 为项目添加一个web应用用于评论功能：如web_comments；
+- 进入应用后可查看firebase安装和配置信息：
+
 ```js
-     const firebaseConfig = {
-     apiKey: "",
-     authDomain: "",
-     databaseURL: "",
-     projectId: "",
-     storageBucket: "",
-     messagingSenderId: "",
-     appId: "",
-     measurementId: ""
-     };
+const firebaseConfig = {
+  apiKey: '',
+  authDomain: '',
+  databaseURL: '',
+  projectId: '',
+  storageBucket: '',
+  messagingSenderId: '',
+  appId: '',
+  measurementId: '',
+}
 ```
-* 为项目添加数据库用于储存评论内容：进入项目，Firestore database点击添加数据库，可免费创建一个；
-* 本地IDE终端安装firebase SDK，以pycharm为例：
+
+- 为项目添加数据库用于储存评论内容：进入项目，Firestore database点击添加数据库，可免费创建一个；
+- 本地IDE终端安装firebase SDK，以pycharm为例：
+
 ```js
     npm install firebase
-  ```
-* 修改博客前端文件，将firebase评论功能添加到博客页面：
-  1) 根目录创建firebase配置文件，如firebase.js; 
+```
+
+- 修改博客前端文件，将firebase评论功能添加到博客页面：
+  1. 根目录创建firebase配置文件，如firebase.js;
+
   ```js
-    import { initializeApp } from "firebase/app";
-    import { getAuth } from "firebase/auth";
-    import { getFirestore } from "firebase/firestore";
-    
-    // 填入你的 Firebase 配置信息
-    const firebaseConfig = {
-      apiKey: "",
-      authDomain: "",
-      projectId: "",
-      storageBucket: "",
-      messagingSenderId: "",
-      appId: "",
-      measurementId: ""
-    };
-    
-    // 初始化 Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    
-    // 导出实例，以便在其他文件中使用
-    export { app, auth, db };
-    ```
-  2) components目录下添加Firebasecomments组件（如Firebasecomments.tsx），从firebase.js导入配置信息；
+  import { initializeApp } from 'firebase/app'
+  import { getAuth } from 'firebase/auth'
+  import { getFirestore } from 'firebase/firestore'
+
+  // 填入你的 Firebase 配置信息
+  const firebaseConfig = {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
+    measurementId: '',
+  }
+
+  // 初始化 Firebase
+  const app = initializeApp(firebaseConfig)
+  const auth = getAuth(app)
+  const db = getFirestore(app)
+
+  // 导出实例，以便在其他文件中使用
+  export { app, auth, db }
+  ```
+
+  2. components目录下添加Firebasecomments组件（如Firebasecomments.tsx），从firebase.js导入配置信息；
+
   ```js
       import { useState, useEffect } from 'react';
       import { getAuth, signInAnonymously } from "firebase/auth";
       import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot, where } from "firebase/firestore";
       import { app, auth, db } from '../firebase'; // firebase.js 文件在根目录
-      
+
       interface Comment {
         id: string;
         comment: string;
         timestamp: Date;
       }
-      
+
       export default function FirebaseComments({ slug }: { slug: string }) { // **接收 slug 属性**
         const [commentText, setCommentText] = useState('');
         const [comments, setComments] = useState<Comment[]>([]);
         const [loading, setLoading] = useState(true);
-      
+
         // 匿名登录并获取评论
         useEffect(() => {
           // 匿名登录
           signInAnonymously(auth).catch(error => {
             console.error("Anonymous login failed:", error);
           });
-      
+
           // 监听评论数据
           const q = query(
             collection(db, "comments"),
@@ -107,22 +114,22 @@ summary: Day 4 采用Firebase免费authentication和firestore database实现用�
             setComments(fetchedComments);
             setLoading(false);
           });
-      
+
           return () => unsubscribe();
         }, [slug]); // **添加 slug 到依赖数组，确保 slug 变化时重新获取评论**
-      
+
         const handleCommentSubmit = async () => {
           if (!commentText.trim()) {
             alert('评论内容不能为空！');
             return;
           }
-      
+
           try {
             // 检查用户是否已匿名登录
             if (!auth.currentUser) {
               await signInAnonymously(auth);
             }
-      
+
             // 添加评论到 Firestore
             await addDoc(collection(db, "comments"), {
               slug: slug, // **新增此行**
@@ -130,31 +137,33 @@ summary: Day 4 采用Firebase免费authentication和firestore database实现用�
               comment: commentText,
               timestamp: serverTimestamp(),
             });
-      
+
             setCommentText('');
             alert('评论已成功提交！');
-      
+
           } catch (error) {
             console.error("提交评论失败:", error);
             alert('提交评论失败，请稍后再试。');
           }
         };
-  
+
       }
-    ```
-  3) 修改原有comments.tsx文件，启用上述Firebasecomments组件；
+  ```
+
+  3. 修改原有comments.tsx文件，启用上述Firebasecomments组件；
+
   ```js
     import { Comments as CommentsComponent } from 'pliny/comments'
     import { useState } from 'react'
     import siteMetadata from '@/data/siteMetadata'
     import FirebaseComments from './FirebaseComments' // 导入新的组件
-    
+
     export default function Comments({ slug }: { slug: string }) {
       const [loadComments, setLoadComments] = useState(false)
-    
+
       // 检查是否启用了 pliny 的评论提供商
       const isPlinyProvider = siteMetadata.comments?.provider
-    
+
       // 决定使用哪种评论组件
       const CommentSection = () => {
         if (isPlinyProvider) {
@@ -164,12 +173,12 @@ summary: Day 4 采用Firebase免费authentication和firestore database实现用�
           return <FirebaseComments slug={slug} />
         }
       }
-    
+
       // 默认使用 pliny 的加载按钮
       if (!isPlinyProvider) {
         return <CommentSection />
       }
-    
+
       return (
         <>
           {loadComments ? (
@@ -180,21 +189,23 @@ summary: Day 4 采用Firebase免费authentication和firestore database实现用�
         </>
       )
     }
-    ```
-  4) 修改评论区显示格式（Firebasecomments.tsx），显示用户名为匿名用户：
+  ```
+
+  4. 修改评论区显示格式（Firebasecomments.tsx），显示用户名为匿名用户：
+
   ```js
-    <div className="comment-section mt-10">
-    <h3 className="text-2xl font-bold mb-4">评论区</h3>
+  <div className="comment-section mt-10">
+    <h3 className="mb-4 text-2xl font-bold">评论区</h3>
     <div className="mb-4">
       <textarea
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
         placeholder="在这里输入评论..."
-        className="w-full h-24 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:border-gray-600"
+        className="focus:ring-primary-500 h-24 w-full rounded-md border p-2 focus:ring-2 focus:outline-none dark:border-gray-600 dark:bg-gray-800"
       />
       <button
         onClick={handleCommentSubmit}
-        className="mt-2 px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600"
+        className="bg-primary-500 hover:bg-primary-600 mt-2 rounded-md px-4 py-2 text-white"
       >
         提交
       </button>
@@ -205,29 +216,31 @@ summary: Day 4 采用Firebase免费authentication和firestore database实现用�
         <div>加载评论中...</div>
       ) : (
         comments.map((comment) => (
-              <div key={comment.id} className="p-4 border-b dark:border-gray-700">
-                {/* 用户名单独在第一行，靠左 */}
-                <p className="font-bold text-gray-800 dark:text-white mb-1 text-left">
-                  {comment.username || '匿名用户'}
-                </p>
+          <div key={comment.id} className="border-b p-4 dark:border-gray-700">
+            {/* 用户名单独在第一行，靠左 */}
+            <p className="mb-1 text-left font-bold text-gray-800 dark:text-white">
+              {comment.username || '匿名用户'}
+            </p>
 
-                {/* 评论内容在下一行，靠左对齐（默认行为）*/}
-                <p className="mb-1 text-left">{comment.comment}</p>
+            {/* 评论内容在下一行，靠左对齐（默认行为）*/}
+            <p className="mb-1 text-left">{comment.comment}</p>
 
-                {/* 时间在再下一行，靠右对齐 */}
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-right">
-                  {comment.timestamp.toLocaleString()}
-                </p>
-              </div>
+            {/* 时间在再下一行，靠右对齐 */}
+            <p className="text-right text-sm text-gray-500 dark:text-gray-400">
+              {comment.timestamp.toLocaleString()}
+            </p>
+          </div>
         ))
       )}
     </div>
   </div>
   ```
-  5) 启用firebase评论功能，替代原有Giscus评论系统：
-  修改data/blog目录下siteMetadata.js文件，将其中comments模块的provider设置为空：
+
+  5. 启用firebase评论功能，替代原有Giscus评论系统：
+     修改data/blog目录下siteMetadata.js文件，将其中comments模块的provider设置为空：
+
   ```js
     provider: '', // comments.tsx 中直接调用了 FirebaseComments 组件，这里provider为空时启用备用评论组件（firebase），可以填写其他providers: giscus, utterances, disqus
   ```
-  6) 通过这种方式，你成功地将 Firebase 评论功能添加到了你的博客中，并且保留了原有versel next.js模板的pliny评论系统的架构。
 
+  6. 通过这种方式，你成功地将 Firebase 评论功能添加到了你的博客中，并且保留了原有versel next.js模板的pliny评论系统的架构。

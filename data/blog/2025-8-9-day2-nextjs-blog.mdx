@@ -10,90 +10,89 @@ summary: Day 2 采用Next.js博客模板构建自己的blog
 
 **项目根目录文件**
 
-   logo.svg: 网站的 SVG 格式 logo 文件，用于在网站顶部或其他位置展示品牌标识。
-   
-   siteMetadata.js: 这是你的博客的全局配置文件，定义了网站的标题、作者、社交媒体链接、主题、分析服务和评论系统等所有基础信息。
-   
-   tailwind.config.js: Tailwind CSS 的配置文件，用于定制你的网站的样式和主题。
-   
-   next.config.js: Next.js 的核心配置文件，用于配置路由、环境变量、Content Security Policy（CSP）等。
-   
-   package.json: 记录项目的所有依赖包和脚本命令，如 npm run dev。
+logo.svg: 网站的 SVG 格式 logo 文件，用于在网站顶部或其他位置展示品牌标识。
+
+siteMetadata.js: 这是你的博客的全局配置文件，定义了网站的标题、作者、社交媒体链接、主题、分析服务和评论系统等所有基础信息。
+
+tailwind.config.js: Tailwind CSS 的配置文件，用于定制你的网站的样式和主题。
+
+next.config.js: Next.js 的核心配置文件，用于配置路由、环境变量、Content Security Policy（CSP）等。
+
+package.json: 记录项目的所有依赖包和脚本命令，如 npm run dev。
 
 **data 目录**
 
-   这个目录是你的博客内容的存储库，是整个网站的核心。
-   
-   authors 目录: 存放作者信息文件。
-   
-   default.mdx: 默认的作者信息文件。
-   
-   sparrowhawk.mdx: 一个额外的作者信息文件，用于多作者博客。
-   
-   这些文件使用 MDX 格式，头部包含 Frontmatter（元数据），如作者姓名、头像路径、社交媒体链接等。
-   
-   blog 目录: 存放你的所有博客文章。
-   
-   nested-route: 这是一个子目录，用于组织多部分文章或系列文章。
-   
-   每个 .mdx 文件都代表一篇博客文章，文章的元数据（如标题、日期、标签）定义在文件的 Frontmatter 中。
+这个目录是你的博客内容的存储库，是整个网站的核心。
+
+authors 目录: 存放作者信息文件。
+
+default.mdx: 默认的作者信息文件。
+
+sparrowhawk.mdx: 一个额外的作者信息文件，用于多作者博客。
+
+这些文件使用 MDX 格式，头部包含 Frontmatter（元数据），如作者姓名、头像路径、社交媒体链接等。
+
+blog 目录: 存放你的所有博客文章。
+
+nested-route: 这是一个子目录，用于组织多部分文章或系列文章。
+
+每个 .mdx 文件都代表一篇博客文章，文章的元数据（如标题、日期、标签）定义在文件的 Frontmatter 中。
 
 **其他重要目录**
 
-   css: 存放你的样式表文件。
-   
-   app: 使用 Next.js app 路由的项目结构。
-   
-   page.js: 你的网站主页。
-   
-   layout.js: 定义网站的公共布局，如导航栏和页脚。
-   
-   tags: 标签页面的路由。
+css: 存放你的样式表文件。
 
+app: 使用 Next.js app 路由的项目结构。
 
-**主要结构文件**： 
+page.js: 你的网站主页。
 
-1. 主页：由动态生成的页面，位置：data/blog 下面的*.mdx格式的Markdown文件
-   
+layout.js: 定义网站的公共布局，如导航栏和页脚。
+
+tags: 标签页面的路由。
+
+**主要结构文件**：
+
+1. 主页：由动态生成的页面，位置：data/blog 下面的\*.mdx格式的Markdown文件
+
 **主页内容的构成**
 
 博客文章数据源:
 
-   data/blog/ 文件夹包含了你所有的博客文章。
-   
-   例如，introducing-tailwind-nextjs-starter-blog.mdx、the-time-machine.mdx 等，这些文件就是你的每一篇博客文章。
-   
-   nested-route 文件夹下的文件也同样是博客文章，它体现了 Next.js 的路由嵌套功能。
+data/blog/ 文件夹包含了你所有的博客文章。
+
+例如，introducing-tailwind-nextjs-starter-blog.mdx、the-time-machine.mdx 等，这些文件就是你的每一篇博客文章。
+
+nested-route 文件夹下的文件也同样是博客文章，它体现了 Next.js 的路由嵌套功能。
 
 **主页页面文件:**
-   
-   主页通常是一个 React 组件，它的代码会去读取 data/blog 文件夹中的所有 .mdx 文件。
-   
-   它会提取每篇文章的元数据（如标题、日期、作者等），然后将它们渲染成一个列表，呈现在主页上。
-   
-   这个主页页面文件很可能存在于 app 或 pages 目录下，但根据你之前提供的信息，你没有找到它。不过这并不影响你修改博客文章内容。
-   
-   如何修改主页上展示的内容
-   你不需要直接修改一个“主页文件”，而是通过修改博客文章文件来改变主页的展示内容。
+
+主页通常是一个 React 组件，它的代码会去读取 data/blog 文件夹中的所有 .mdx 文件。
+
+它会提取每篇文章的元数据（如标题、日期、作者等），然后将它们渲染成一个列表，呈现在主页上。
+
+这个主页页面文件很可能存在于 app 或 pages 目录下，但根据你之前提供的信息，你没有找到它。不过这并不影响你修改博客文章内容。
+
+如何修改主页上展示的内容
+你不需要直接修改一个“主页文件”，而是通过修改博客文章文件来改变主页的展示内容。
 
 **修改已有文章:**
 
-   打开 data/blog 文件夹下的任何一个 .mdx 文件。
-   
-   修改文件顶部的元数据（被称为 "Frontmatter"），例如 title、author、date 等。
-   
-   修改下面的 Markdown/MDX 内容，即文章正文。
-   
-   保存文件后，在浏览器中刷新本地开发服务器 (http://localhost:3000)，主页上该篇文章的展示就会更新。
+打开 data/blog 文件夹下的任何一个 .mdx 文件。
+
+修改文件顶部的元数据（被称为 "Frontmatter"），例如 title、author、date 等。
+
+修改下面的 Markdown/MDX 内容，即文章正文。
+
+保存文件后，在浏览器中刷新本地开发服务器 (http://localhost:3000)，主页上该篇文章的展示就会更新。
 
 **创建新文章:**
 
-   在 data/blog 文件夹中，新建一个 .mdx 文件，例如 my-new-post.mdx。
-   
-   在文件开头，添加必要的元数据：
-   
-   Markdown格式：
-    
+在 data/blog 文件夹中，新建一个 .mdx 文件，例如 my-new-post.mdx。
+
+在文件开头，添加必要的元数据：
+
+Markdown格式：
+
 ```md
     ---
     title: '我的第一篇博客'
@@ -101,105 +100,105 @@ summary: Day 2 采用Next.js博客模板构建自己的blog
     author: 'your-name'
     summary: '这是我写的第一篇博客文章，非常激动！'
     ---
-
-```    
+```
 
 2. 全局设置文件：/data/blog/下的siteMetadata.js文件，决定了整个网站的基础信息，如标题、作者、社交媒体链接等。
 
-    要修改主页上的全局信息，你只需直接编辑这个文件中的对应字段即可。
-    
-    网站标题:
-    
-     字段: title 和 headerTitle
-     
-     title: 'Next.js Starter Blog' -> '我的个人博客'
-     
-     headerTitle: 'TailwindBlog' -> '我的博客'
-     
-     title 通常用于浏览器标签页和 SEO，headerTitle 则可能用于页面顶部的导航栏。根据你的模板，这两个字段可能都会在主页上显示。
-    
-    网站描述和作者:
-    
-     字段: author 和 description
-     
-     author: 'Tails Azimuth' -> '你的名字'
-     
-     description: 'A blog created with Next.js and Tailwind.css' -> '一个用 Next.js 搭建的个人技术博客'
-    
-    网站链接:
-    
-     字段: siteUrl, siteRepo, email, github, x, 等
-     
-     将 siteUrl 的值改为你自己的域名，例如 'https://your-domain.com'。
-     
-     修改 github、x、email 等字段，填入你自己的社交媒体链接或邮箱地址。
-    
-    网站 Logo 和 Banner:
-    
-     字段: siteLogo, socialBanner
-     
-     siteLogo: '${process.env.BASE_PATH || ''}/static/images/logo.png'
-     
-     这行代码指示网站 Logo 的路径是 static/images/logo.png。你需要将自己的 Logo 图片替换掉这个文件，并确保文件名和路径一致。
-    
-    网站主题:
-    
-     字段: theme
-     
-     'system', 'dark', 或 'light'
-     
-     你可以修改这个值来设置网站的默认主题。
+   要修改主页上的全局信息，你只需直接编辑这个文件中的对应字段即可。
+
+   网站标题:
+
+   字段: title 和 headerTitle
+
+   title: 'Next.js Starter Blog' -> '我的个人博客'
+
+   headerTitle: 'TailwindBlog' -> '我的博客'
+
+   title 通常用于浏览器标签页和 SEO，headerTitle 则可能用于页面顶部的导航栏。根据你的模板，这两个字段可能都会在主页上显示。
+
+   网站描述和作者:
+
+   字段: author 和 description
+
+   author: 'Tails Azimuth' -> '你的名字'
+
+   description: 'A blog created with Next.js and Tailwind.css' -> '一个用 Next.js 搭建的个人技术博客'
+
+   网站链接:
+
+   字段: siteUrl, siteRepo, email, github, x, 等
+
+   将 siteUrl 的值改为你自己的域名，例如 'https://your-domain.com'。
+
+   修改 github、x、email 等字段，填入你自己的社交媒体链接或邮箱地址。
+
+   网站 Logo 和 Banner:
+
+   字段: siteLogo, socialBanner
+
+   siteLogo: '${process.env.BASE_PATH || ''}/static/images/logo.png'
+
+   这行代码指示网站 Logo 的路径是 static/images/logo.png。你需要将自己的 Logo 图片替换掉这个文件，并确保文件名和路径一致。
+
+   网站主题:
+
+   字段: theme
+
+   'system', 'dark', 或 'light'
+
+   你可以修改这个值来设置网站的默认主题。
 
 3. 个人信息/图片文件：/static/images/
-   
-    public 文件夹被视为网站的根目录， /static/images/img.png 会被 Next.js 自动解析为 http://localhost:3000/static/images/img.png （本地开发环境）或 https://your-domain.com/static/images/img.png （线上环境）。
+
+   public 文件夹被视为网站的根目录， /static/images/img.png 会被 Next.js 自动解析为 http://localhost:3000/static/images/img.png （本地开发环境）或 https://your-domain.com/static/images/img.png （线上环境）。
 
 4. Next.js 应用程序的配置文件：
 
    通常命名为 next.config.js。它的作用是为你的 Next.js 网站定义构建、路由、安全策略和模块处理等方面的行为。
 
-    这段代码是一个 Next.js 应用程序的配置文件，通常命名为 next.config.js。它的作用是为你的 Next.js 网站定义构建、路由、安全策略和模块处理等方面的行为。
-    
-    主要功能解析
-    插件集成:
-    
-    withContentlayer: 集成了 Contentlayer，这是一个内容管理框架，它将 Markdown/MDX 文件转换成类型安全的数据，方便在 Next.js 项目中使用。这表明你的博客内容是通过 .mdx 文件管理的。
-    
-    withBundleAnalyzer: 集成了 next/bundle-analyzer，用于分析你的 JavaScript 包大小。当环境变量 ANALYZE 设置为 true 时启用。这有助于优化网站加载性能。
-    
-    安全头部（Security Headers）:
-    
-    定义了一系列 HTTP 安全头部，旨在提高网站的安全性。
-    
-    Content-Security-Policy (CSP): 这条策略尤为重要，它限制了浏览器可以加载的资源类型和来源。
-    
-    default-src 'self': 默认只允许加载同源资源。
-    
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is: 允许来自自身、giscus.app（评论系统）和 analytics.umami.is（网站分析）的脚本，同时允许内联和动态执行脚本。
-    
-    img-src * blob: data:: 允许从任何来源加载图片。
-    
-    frame-src giscus.app: 只允许来自 giscus.app 的 iframe。
-    
-    其他头部如 X-Frame-Options、X-Content-Type-Options 等也都是用于防止常见网络攻击的。
-    
-    构建和渲染配置:
-    
-    output: 如果环境变量 EXPORT 为 true，则会将 Next.js 项目构建为静态 HTML 文件。这对于部署到 Vercel 这类静态网站托管服务非常有用。
-    
-    reactStrictMode: true: 开启 React 严格模式，有助于在开发过程中发现潜在问题。
-    
-    pageExtensions: 告诉 Next.js 哪些文件后缀名应该被视为页面，包括 ts, tsx, js, jsx, md, mdx。这也再次确认了你的博客内容是通过 .mdx 文件管理的。
-    
-    图像优化:
-    
-    images.remotePatterns: 允许 Next.js 从 picsum.photos 这个远程域名加载和优化图片。
-    
-    Webpack 配置:
-    
-    这是一个自定义 Webpack 配置的部分:
+   这段代码是一个 Next.js 应用程序的配置文件，通常命名为 next.config.js。它的作用是为你的 Next.js 网站定义构建、路由、安全策略和模块处理等方面的行为。
 
-    ```js
-     webpack: (config, options) => { ... }    
-    ```
-    test: /\.svg$/ 和 use: ['@svgr/webpack']: 这段配置的作用是将 SVG 文件作为 React 组件导入，而不是简单的图像文件。这对于在代码中直接使用和操作 SVG 图标非常方便。
+   主要功能解析
+   插件集成:
+
+   withContentlayer: 集成了 Contentlayer，这是一个内容管理框架，它将 Markdown/MDX 文件转换成类型安全的数据，方便在 Next.js 项目中使用。这表明你的博客内容是通过 .mdx 文件管理的。
+
+   withBundleAnalyzer: 集成了 next/bundle-analyzer，用于分析你的 JavaScript 包大小。当环境变量 ANALYZE 设置为 true 时启用。这有助于优化网站加载性能。
+
+   安全头部（Security Headers）:
+
+   定义了一系列 HTTP 安全头部，旨在提高网站的安全性。
+
+   Content-Security-Policy (CSP): 这条策略尤为重要，它限制了浏览器可以加载的资源类型和来源。
+
+   default-src 'self': 默认只允许加载同源资源。
+
+   script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is: 允许来自自身、giscus.app（评论系统）和 analytics.umami.is（网站分析）的脚本，同时允许内联和动态执行脚本。
+
+   img-src \* blob: data:: 允许从任何来源加载图片。
+
+   frame-src giscus.app: 只允许来自 giscus.app 的 iframe。
+
+   其他头部如 X-Frame-Options、X-Content-Type-Options 等也都是用于防止常见网络攻击的。
+
+   构建和渲染配置:
+
+   output: 如果环境变量 EXPORT 为 true，则会将 Next.js 项目构建为静态 HTML 文件。这对于部署到 Vercel 这类静态网站托管服务非常有用。
+
+   reactStrictMode: true: 开启 React 严格模式，有助于在开发过程中发现潜在问题。
+
+   pageExtensions: 告诉 Next.js 哪些文件后缀名应该被视为页面，包括 ts, tsx, js, jsx, md, mdx。这也再次确认了你的博客内容是通过 .mdx 文件管理的。
+
+   图像优化:
+
+   images.remotePatterns: 允许 Next.js 从 picsum.photos 这个远程域名加载和优化图片。
+
+   Webpack 配置:
+
+   这是一个自定义 Webpack 配置的部分:
+
+   ```js
+    webpack: (config, options) => { ... }
+   ```
+
+   test: /\.svg$/ 和 use: ['@svgr/webpack']: 这段配置的作用是将 SVG 文件作为 React 组件导入，而不是简单的图像文件。这对于在代码中直接使用和操作 SVG 图标非常方便。
