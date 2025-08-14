@@ -46,6 +46,7 @@ export default function FirebaseComments({ slug }: { slug: string }) {
         const data = doc.data()
         fetchedComments.push({
           id: doc.id,
+          username: data.username || '匿名用户',
           comment: data.comment,
           timestamp: data.timestamp?.toDate() || new Date(),
         })
