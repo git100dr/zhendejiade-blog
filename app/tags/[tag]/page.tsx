@@ -38,9 +38,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
   const params = await props.params
   const tag = decodeURI(params.tag)
   //   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
-  const title = /^[a-zA-Z]/.test(tag)
-    ? tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
-    : tag
+  const title = tag
 
   const filteredPosts = allCoreContent(
     sortPosts(allBlogs.filter((post) => post.tags && post.tags.includes(tag)))
