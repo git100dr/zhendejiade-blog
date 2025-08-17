@@ -19,7 +19,7 @@ interface Comment {
   id: string
   username: string
   comment: string
-  timestamp: Timestamp
+  timestamp: Date
 }
 
 const FirebaseCommentSection = ({ slug }) => {
