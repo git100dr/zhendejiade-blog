@@ -17,8 +17,8 @@ import { app, auth, db } from '../firebase' // 假设你的 firebase.js 文件�
 // Comment 的类型定义
 interface Comment {
   id: string
-  username: string
-  comment: string
+  user: string
+  text: string
   timestamp: Date
 }
 
