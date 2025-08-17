@@ -1,10 +1,10 @@
 ---
-title: 'Introducing Tailwind Nextjs Starter Blog'
+title: 'Tailwind Nextjs Starter Blog 介绍'
 date: '2021-01-12'
 lastmod: '2024-08-16'
 tags: ['next-js', 'tailwind', 'guide', 'blog', 'template']
 draft: false
-summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
+summary: 'Tailwind Nextjs Starter Blog 模板是一个高性能、开箱即用的模板，满足初学者所有的博客需求。'
 images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
 authors: ['default', 'sparrowhawk']
 ---
@@ -15,61 +15,83 @@ authors: ['default', 'sparrowhawk']
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
-> [!CAUTION]
-> This is the README of version 1 of the template. It is kept for historical reasons, but is no longer supported. It also serves as a nice example of [Github Alert](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts). For the actual documentation, please refer to the [Github repository](https://github.com/timlrx/tailwind-nextjs-starter-blog).
+> [!注意]
+> 这是模板第一版（Version 1）的 README。出于历史原因保留，但已不再提供支持。它同时也是 Github Alert 的一个不错示例。有关最新文档，请参阅 Github 仓库。
 
-This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blogging starter template. Probably the most feature-rich Next.js markdown blogging template out there. Comes out of the box configured with the latest technologies to make technical writing a breeze. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
+这是一个基于 Next.js 和 Tailwind CSS 的博客入门模板。它可能是功能最丰富的 Next.js Markdown 博客模板。开箱即用，配置了最新技术，让技术写作变得轻松。它易于配置和定制，是替代现有 Jekyll 和 Hugo 个人博客的绝佳选择。
 
-Check out the documentation below to get started.
+查看下面的文档以开始使用。
 
-Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-starter-blog/wiki) and do a search on past issues. Feel free to open a new issue if none has been posted previously.
+遇到问题？请查看 FAQ 页面 并搜索之前是否已有人提出。如果没有，请随时开一个新的 issue。
 
-Feature request? Check the past discussions to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
+有功能需求？请检查之前的讨论，看是否已有人提出。如果没有，请随时发起新的讨论。我们欢迎所有想法！
 
-## Examples
+## 示例
 
-- [Demo Blog](https://tailwind-nextjs-starter-blog.vercel.app/) - this repo
-- [My personal blog](https://www.timlrx.com) - modified to auto-generate blog posts with dates
-- [Aloisdg's cookbook](https://tambouille.vercel.app/) - with pictures and recipes!
-- [GautierArcin's demo with next translate](https://tailwind-nextjs-starter-blog-seven.vercel.app/) - includes translation of mdx posts, [source code](https://github.com/GautierArcin/tailwind-nextjs-starter-blog/tree/demo/next-translate)
-- [David Levai's digital garden](https://davidlevai.com/) - customized design and added email subscriptions
-- [Thinh's Corner](https://thinhcorner.com/) - [customized layout](https://github.com/Th1nhNg0/th1nhng0.vercel.app/blob/5e73a420828d82f01e7147512a2c3273c4ec19f8/layouts/PostLayout.js) with sticky side table of contents
+- [Demo Blog](https://tailwind-nextjs-starter-blog.vercel.app/) - 本仓库
+- [My personal blog](https://www.timlrx.com) - 经过修改，可自动生成带有日期的博客文章
+- [Aloisdg's cookbook](https://tambouille.vercel.app/) - 包含图片和菜谱！
+- [GautierArcin's demo with next translate](https://tailwind-nextjs-starter-blog-seven.vercel.app/) - 包括 mdx 文章的翻译， [源代码](https://github.com/GautierArcin/tailwind-nextjs-starter-blog/tree/demo/next-translate)
+- [David Levai's digital garden](https://davidlevai.com/) - 定制设计并添加邮件订阅
+- [Thinh's Corner](https://thinhcorner.com/) - [定制布局](https://github.com/Th1nhNg0/th1nhng0.vercel.app/blob/5e73a420828d82f01e7147512a2c3273c4ec19f8/layouts/PostLayout.js) 带有固定的侧边目录
 
-Using the template? Feel free to create a PR and add your blog to this list.
+如果使用此模板，欢迎提交 PR 将您的博客添加到此列表。
 
-## Motivation
+## 创作初衷
 
-I wanted to port my existing blog to Nextjs and Tailwind CSS but there was no easy out of the box template to use so I decided to create one. Design is adapted from [Tailwindlabs blog](https://github.com/tailwindlabs/blog.tailwindcss.com).
+我希望将我现有的博客移植到 Nextjs 和 Tailwind CSS，但市面上没有易于使用的开箱即用模板，所以我决定自己创建一个。设计改编自 Tailwindlabs 博客。
 
-I wanted it to be nearly as feature-rich as popular blogging templates like [beautiful-jekyll](https://github.com/daattali/beautiful-jekyll) and [Hugo Academic](https://github.com/wowchemy/wowchemy-hugo-modules) but with the best of React's ecosystem and current web development's best practices.
+我希望它能像 beautiful-jekyll 和 Hugo Academic 等流行的博客模板一样功能丰富，但同时具备 React 生态系统的最佳实践和当前网页开发的前沿技术。
 
-## Features
+## 特性
 
-- Easy styling customization with [Tailwind 3.0](https://tailwindcss.com/blog/tailwindcss-v3) and primary color attribute
-- Near perfect lighthouse score - [Lighthouse report](https://www.webpagetest.org/result/210111_DiC1_08f3670c3430bf4a9b76fc3b927716c5/)
-- Lightweight, 45kB first load JS, uses Preact in production build
-- Mobile-friendly view
-- Light and dark theme
-- Self-hosted font with [Fontsource](https://fontsource.org/)
-- Supports [plausible](https://plausible.io/), [simple analytics](https://simpleanalytics.com/) and google analytics
-- [MDX - write JSX in markdown documents!](https://mdxjs.com/)
-- Server-side syntax highlighting with line numbers and line highlighting via [rehype-prism-plus](https://github.com/timlrx/rehype-prism-plus)
-- Math display supported via [KaTeX](https://katex.org/)
-- Citation and bibliography support via [rehype-citation](https://github.com/timlrx/rehype-citation)
-- Automatic image optimization via [next/image](https://nextjs.org/docs/basic-features/image-optimization)
-- Flexible data retrieval with [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
-- Support for tags - each unique tag will be its own page
-- Support for multiple authors
-- Blog templates
-- TOC component
-- Support for nested routing of blog posts
-- Newsletter component with support for Mailchimp, Buttondown, Convertkit, Klaviyo, Revue, Emailoctopus and Beehiiv
-- Supports [giscus](https://github.com/laymonage/giscus), [utterances](https://github.com/utterance/utterances) or disqus
-- Projects page
-- Preconfigured security headers
-- SEO friendly with RSS feed, sitemaps and more!
+- 通过 Tailwind 3.0 和主色属性轻松定制样式
+-
+- 接近完美的 Lighthouse 评分 - Lighthouse 报告
+-
+- 轻量级，首次加载 JS 仅 45kB，在生产构建中使用 Preact
+-
+- 移动设备友好视图
+-
+- 浅色和深色主题
+-
+- 使用 Fontsource 自托管字体
+-
+- 支持 Plausible、Simple Analytics 和 Google Analytics
+-
+- MDX - 在 Markdown 文档中编写 JSX！
+-
+- 通过 rehype-prism-plus 实现带有行号和行高亮的服务器端语法高亮
+-
+- 支持通过 KaTeX 显示数学公式
+-
+- 通过 rehype-citation 支持引用和参考文献
+-
+- 通过 next/image 自动优化图片
+-
+- 通过 mdx-bundler 实现灵活的数据检索
+-
+- 支持标签 - 每个独特的标签都会有自己的页面
+-
+- 支持多作者
+-
+- 博客模板
+-
+- 目录组件
+-
+- 支持博客文章的嵌套路由
+-
+- 支持 Mailchimp、Buttondown、Convertkit、Klaviyo、Revue、Emailoctopus 和 Beehiiv 的新闻通讯组件
+-
+- 支持 giscus、utterances 或 Disqus
+-
+- 项目页面
+-
+- 预配置的安全头
+-
+- SEO 友好，支持 RSS Feed、站点地图等！
 
-## Sample posts
+## 示例文章
 
 - [A markdown guide](https://tailwind-nextjs-starter-blog.vercel.app/blog/github-markdown-guide)
 - [Learn more about images in Next.js](https://tailwind-nextjs-starter-blog.vercel.app/blog/guide-to-using-images-in-nextjs)
@@ -78,21 +100,20 @@ I wanted it to be nearly as feature-rich as popular blogging templates like [bea
 - [Example of long prose](https://tailwind-nextjs-starter-blog.vercel.app/blog/the-time-machine)
 - [Example of Nested Route Post](https://tailwind-nextjs-starter-blog.vercel.app/blog/nested-route/introducing-multi-part-posts-with-nested-routing)
 
-## Quick Start Guide
+## 快速入门指南
 
-1. JS (official support) - `npx degit https://github.com/timlrx/tailwind-nextjs-starter-blog.git` or TS (community support) - `npx degit timlrx/tailwind-nextjs-starter-blog#typescript`
-2. Personalize `siteMetadata.js` (site related information)
-3. Modify the content security policy in `next.config.js` if you want to use
-   any analytics provider or a commenting solution other than giscus.
-4. Personalize `authors/default.md` (main author)
-5. Modify `projectsData.ts`
-6. Modify `headerNavLinks.ts` to customize navigation links
-7. Add blog posts
-8. Deploy on Vercel
+1. JS（官方支持）- `npx degit https://github.com/timlrx/tailwind-nextjs-starter-blog.git` 或 TS（社区支持）- `npx degit timlrx/tailwind-nextjs-starter-blog#typescript`
+2. 修改 `siteMetadata.js` （站点相关信息）
+3. 如果你想使用除 giscus 之外的任何分析提供商或评论解决方案，请修改 next.config.js 中的内容安全策略。
+4. 修改 `authors/default.md` (main author)
+5. 修改 `projectsData.ts`
+6. 修改 `headerNavLinks.ts` 以自定义导航链接
+7. 添加博客文章
+8. Vercel 部署
 
-## Development
+## 发行 Development
 
-First, run the development server:
+首先，运行开发服务器：
 
 ```bash
 npm start
@@ -100,47 +121,47 @@ npm start
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+在浏览器中打开 http://localhost:3000 查看结果。
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+你可以通过修改 pages/index.js 来开始编辑页面。当你编辑文件时，页面会自动更新。
 
-## Extend / Customize
+## 扩展 / 定制
 
-`data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
+- data/siteMetadata.js - 包含大部分站点相关信息，应根据用户需求进行修改。
 
-`data/authors/default.md` - default author information (required). Additional authors can be added as files in `data/authors`.
+- data/authors/default.md - 默认作者信息（必需）。可以通过在 data/authors 中添加文件来增加其他作者。
 
-`data/projectsData.js` - data used to generate styled card on the projects page.
+- data/projectsData.js - 用于在项目页面上生成样式化卡片的数据。
 
-`data/headerNavLinks.js` - navigation links.
+- data/headerNavLinks.js - 导航链接。
 
-`data/logo.svg` - replace with your own logo.
+- data/logo.svg - 替换为你自己的标志。
 
-`data/blog` - replace with your own blog posts.
+- data/blog - 替换为你自己的博客文章。
 
-`public/static` - store assets such as images and favicons.
+- public/static - 存放图像和网站图标等资源。
 
-`tailwind.config.js` and `css/tailwind.css` - contain the tailwind stylesheet which can be modified to change the overall look and feel of the site.
+- tailwind.config.js 和 css/tailwind.css - 包含 Tailwind 样式表，可修改以改变站点的整体外观。
 
-`css/prism.css` - controls the styles associated with the code blocks. Feel free to customize it and use your preferred prismjs theme e.g. [prism themes](https://github.com/PrismJS/prism-themes).
+- css/prism.css - 控制与代码块相关的样式。可以自由定制并使用你喜欢的 prismjs 主题，例如 prism themes。
 
-`components/social-icons` - to add other icons, simply copy an svg file from [Simple Icons](https://simpleicons.org/) and map them in `index.js`. Other icons use [heroicons](https://heroicons.com/).
+- components/social-icons - 要添加其他图标，只需从 Simple Icons 复制一个 SVG 文件并在 index.js 中进行映射。其他图标使用 heroicons。
 
-`components/MDXComponents.js` - pass your own JSX code or React component by specifying it over here. You can then call them directly in the `.mdx` or `.md` file. By default, a custom link and image component is passed.
+- components/MDXComponents.js - 在这里指定你自己的 JSX 代码或 React 组件。然后你就可以在 .mdx 或 .md 文件中直接调用它们。默认情况下，会传递一个自定义的链接和图像组件。
 
-`layouts` - main templates used in pages.
+- layouts - 页面中使用的主要模板。
 
-`pages` - pages to route to. Read the [Next.js documentation](https://nextjs.org/docs) for more information.
+- pages - 路由到的页面。阅读 Next.js 文档 了解更多信息。
 
-`next.config.js` - configuration related to Next.js. You need to adapt the Content Security Policy if you want to load scripts, images etc. from other domains.
+- next.config.js - 与 Next.js 相关的配置。如果你想从其他域加载脚本、图像等，需要调整内容安全策略。
 
-## Post
+## 文章 Posts
 
-### Frontmatter
+### 文件头（Frontmatter）
 
-Frontmatter follows [Hugo's standards](https://gohugo.io/content-management/front-matter/).
+- Frontmatter 遵循 Hugo 的标准。
 
-Currently 10 fields are supported.
+- 目前支持 10 个字段。
 
 ```
 title (required)
@@ -155,7 +176,7 @@ layout (optional list which should correspond to the file names in `data/layouts
 canonicalUrl (optional, canonical url for the post for SEO)
 ```
 
-Here's an example of a post's frontmatter:
+以下是一篇文章的 frontmatter 示例：
 
 ```
 ---
@@ -172,26 +193,26 @@ canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-t
 ---
 ```
 
-### Compose
+### 编译 Compose
 
-Run `node ./scripts/compose.js` to bootstrap a new post.
+运行 node ./scripts/compose.js 来引导一篇新文章。
 
-Follow the interactive prompt to generate a post with pre-filled front matter.
+按照交互式提示生成一篇带有预填充 frontmatter 的文章。
 
-## Deploy
+## 部署 Deploy
 
 **Vercel**  
-The easiest way to deploy the template is to use the [Vercel Platform](https://vercel.com) from the creators of Next.js. Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+部署此模板最简单的方法是使用由 Next.js 的创建者提供的 Vercel 平台。查看 Next.js 部署文档 了解更多详情。
 
-**Netlify / GitHub Pages / Firebase etc.**  
-As the template uses `next/image` for image optimization, additional configurations have to be made to deploy on other popular static hosting websites like [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/). An alternative image optimization provider such as Imgix, Cloudinary or Akamai has to be used. Alternatively, replace the `next/image` component with a standard `<img>` tag. See [`next/image` documentation](https://nextjs.org/docs/basic-features/image-optimization) for more details.
+**Netlify / GitHub Pages / Firebase 等**  
+由于此模板使用 next/image 进行图片优化，因此在部署到 Netlify 或 GitHub Pages 等其他流行的静态托管网站时需要进行额外配置。必须使用 Imgix、Cloudinary 或 Akamai 等替代的图片优化提供商。或者，将 next/image 组件替换为标准的 `<img>` 标签。有关更多详情，请参阅 next/image 文档。
 
-The API routes used in the newsletter component cannot be used in a static site export. You will need to use a form API endpoint provider and substitute the route in the newsletter component accordingly. Other hosting platforms such as Netlify also offer alternative solutions - please refer to their docs for more information.
+新闻通讯组件中使用的 API 路由无法在静态站点导出中使用。你需要使用一个表单 API 端点提供商，并相应地替换新闻通讯组件中的路由。Netlify 等其他托管平台也提供替代解决方案 - 请参阅它们的文档了解更多信息。
 
-## Support
+## 支持 Support
 
-Using the template? Support this effort by giving a star on GitHub, sharing your own blog and giving a shoutout on Twitter or be a project [sponsor](https://github.com/sponsors/timlrx).
+正在使用此模板吗？通过在 GitHub 上点赞、分享你的博客并在 Twitter 上宣传，或者成为项目赞助者来支持这项努力。
 
-## Licence
+## 许可 Licence
 
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timrlx.com)

@@ -1,0 +1,41 @@
+---
+title: '解决vercel不支持中文标签的问题'
+date: '2025-08-16'
+tags: ['build', 'blog', 'vercel', 'tags', '中文标签']
+lastmod: '2025-08-16'
+draft: false
+summary:
+---
+
+**问题描述：**
+
+本地环境部署中文标签没有问题，但是推送vercel部署后点击中文标签无法显示相应标签的blog。
+
+**检索网络寻求解决方法**
+
+1. 网上有博主说[vercel不支持中文标签](https://blog.csdn.net/yys365/article/details/145565026)，不如都换成英文标签，无解！!
+
+2. 查找分析原因：比较本地和vercel部署日志，发现：
+   - URL编码问题没问题：日志显示本地和vercel部署中标签URL编码都是正确的。
+     ![本地标签URL编码](/static/images/local-tags-capture.png)
+     ![Vercel标签URL编码](/static/images/vercel-tag-capture.png)
+   - 标签过滤逻辑问题：vercel采用了URL编码后的tag查询匹配Next-js自动生成的标签列表（未编码的tag），两者不一致导致无法匹配上中文标签的blog。
+
+**解决方法**
+
+- 修改app/tags/[tag]/page.tsx 中的代码：在 generateStaticParams 中，使用 slugger 来生成 URL，而不是直接使用 encodeURI。
+- ```js
+    export const generateStaticParams = async () => {
+      const tagCounts = tagData as Record<string, number>
+      const tagKeys = Object.keys(tagCounts)
+
+      return tagKeys.map((tag) => ({
+      //tag:encodeURI(tag),
+      tag: slug(tag),   // 核心修改：使用 slug() 来生成 URL 编码的标签，以确保与内容生成器的一致性
+      }))
+   }
+  ```
+
+```
+
+```
