@@ -25,7 +25,8 @@ interface Comment {
 const FirebaseCommentSection = ({ slug }) => {
   const [userName, setUserName] = useState('匿名用户')
   const [commentText, setCommentText] = useState('')
-  const [comments, setComments] = useState([]) //存储从 Firestore 获取的评论数据
+  const [comments, setComments] = useState<Comment[]>([])
+  const [loading, setLoading] = useState(true)
 
   // 使用 useEffect 钩子监听 Firebase 评论的变化
   useEffect(() => {
