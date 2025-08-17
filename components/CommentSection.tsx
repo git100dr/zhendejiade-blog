@@ -172,7 +172,7 @@ const FirebaseCommentSection = ({ slug }) => {
  * Giscus 组件，动态加载脚本以启用 GitHub 评论
  */
 const GiscusComponent = () => {
-  const giscusRef = useRef(null)
+  const giscusRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const script = document.createElement('script')
