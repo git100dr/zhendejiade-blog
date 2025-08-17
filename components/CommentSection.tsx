@@ -19,7 +19,7 @@ interface Comment {
   id: string
   username: string
   comment: string
-  timestamp: Date
+  timestamp: Timestamp
 }
 
 const FirebaseCommentSection = ({ slug }) => {
@@ -44,8 +44,17 @@ const FirebaseCommentSection = ({ slug }) => {
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
-        // 将 Firestore 文档数据映射到组件状态
-        setComments(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+        setComments(
+          snapshot.docs.map((doc) => {
+            const data = doc.data()
+            return {
+              id: doc.id,
+              user: data.user, // 如果你之前将字段名从 username 改为 user，这里也需要匹配
+              text: data.text, // 如果你之前将字段名从 comment 改为 text，这里也需要匹配
+              timestamp: data.timestamp,
+            }
+          }) as Comment[] // 使用类型断言来解决 TypeScript 推断问题
+        )
       },
       (error) => {
         console.error('监听评论时出错: ', error)
