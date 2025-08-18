@@ -106,7 +106,7 @@ const FirebaseCommentSection = ({ slug }) => {
 
   return (
     <div className="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h4 className="mb-4 text-xl font-medium text-gray-900 dark:text-gray-100">匿名评论</h4>
+      <h4 className="mb-4 text-base font-bold text-gray-900 dark:text-gray-100">匿名评论</h4>
       <form onSubmit={handleAddComment} className="space-y-4">
         <div>
           <label htmlFor="name" className="sr-only">
@@ -137,7 +137,7 @@ const FirebaseCommentSection = ({ slug }) => {
         </div>
         <button
           type="submit"
-          className="bg-primary-500 hover:bg-primary-600 focus:ring-primary-500 rounded-md px-8 py-1 text-base font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
+          className="bg-primary-500 hover:bg-primary-600 focus:ring-primary-500 rounded-md px-4 py-1 text-base font-medium text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
           提交
         </button>
@@ -146,12 +146,14 @@ const FirebaseCommentSection = ({ slug }) => {
         {comments.map((comment) => (
           <div key={comment.id} className="border-b border-gray-200 p-4 dark:border-gray-700">
             {/* 用户名：单独一行，靠左对齐 */}
-            <div className="text-left font-medium text-gray-900 dark:text-gray-100">
+            <div className="text-left text-sm font-bold text-gray-900 dark:text-gray-100">
               {comment.user}
             </div>
 
             {/* 评论内容：单独一行，靠左对齐 */}
-            <p className="mt-2 text-left text-gray-700 dark:text-gray-300">{comment.text}</p>
+            <p className="mt-2 text-left text-sm text-gray-700 dark:text-gray-300">
+              {comment.text}
+            </p>
 
             {/* 时间：单独一行，靠右对齐 */}
             <div className="mt-2 text-right text-sm text-gray-500 dark:text-gray-400">
@@ -187,13 +189,14 @@ const GiscusComponent = () => {
     script.setAttribute('data-repo-id', process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID || '')
     script.setAttribute('data-category', process.env.NEXT_PUBLIC_GISCUS_CATEGORY || '')
     script.setAttribute('data-category-id', process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID || '')
+    // 💡 新增和修改此处：根据你提供的配置修改硬编码的属性
     script.setAttribute('data-mapping', 'pathname')
+    script.setAttribute('data-strict', '0') // 新增
     script.setAttribute('data-reactions-enabled', '1')
     script.setAttribute('data-emit-metadata', '0')
-    script.setAttribute('data-input-position', 'top')
+    script.setAttribute('data-input-position', 'top') // 从 'top' 改为 'bottom'
     script.setAttribute('data-theme', 'preferred_color_scheme')
-    script.setAttribute('data-lang', 'en')
-    script.setAttribute('data-loading', 'lazy')
+    script.setAttribute('data-lang', 'zh-CN') // 从 'en' 改为 'zh-CN'
 
     const giscusContainer = giscusRef.current
     // 只有在 ref 存在时才追加脚本
@@ -213,18 +216,9 @@ const GiscusComponent = () => {
   return <div ref={giscusRef} className="giscus-container w-full"></div>
 }
 
-/**
- * Giscus 组件，动态加载脚本以启用 GitHub 评论
- */
-
 const CommentSection = ({ slug }: { slug: string }) => {
-  // 我们不再需要 commentType 状态和按钮，所以可以删除它们
-  // const [commentType, setCommentType] = useState('firebase');
-
   return (
     <div className="py-8">
-      {/* 移除按钮部分，因为它不再需要 */}
-
       {/* 使用 Flexbox 布局实现左右并排 */}
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
         {/* Firebase 匿名评论区 */}

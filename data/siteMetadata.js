@@ -6,8 +6,8 @@ const siteMetadata = {
   description: 'Wild, Mad, Bad',
   language: 'ch-cn',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://zhendejiade-blog-mu-smoky.vercel.app',
+  siteRepo: 'https://github.com/git100dr/zhendejiade-blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: '',
