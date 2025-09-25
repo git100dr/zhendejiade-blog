@@ -1,0 +1,324 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XX小说网 - 原创文学阅读平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6', // 紫色主色调
+                        secondary: '#EC4899', // 辅助色
+                        dark: '#1F2937',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fa fa-book text-primary text-2xl"></i>
+                    <span class="text-xl font-bold text-primary">星辰小说网</span>
+                </div>
+
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="font-medium hover:text-primary transition-colors">首页</a>
+                    <a href="#" class="font-medium hover:text-primary transition-colors">分类</a>
+                    <a href="#" class="font-medium hover:text-primary transition-colors">排行榜</a>
+                    <a href="#" class="font-medium hover:text-primary transition-colors">最新更新</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden md:block">
+                        <input type="text" placeholder="搜索小说..." class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                        <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full transition-colors">
+                        登录/注册
+                    </button>
+                    <button class="md:hidden text-gray-600">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 轮播推荐 -->
+    <section class="bg-gradient-to-r from-purple-900 to-indigo-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <span class="bg-secondary/80 px-3 py-1 rounded-full text-sm">重磅推荐</span>
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-4 leading-tight text-shadow">《星河漫游者》</h2>
+                    <p class="text-purple-100 mt-4 max-w-lg">在遥远的27世纪，人类文明遍布银河系，一名普通的星际快递员意外卷入了一场横跨数个星域的巨大阴谋...</p>
+                    <div class="mt-6 flex items-center gap-4">
+                        <span>作者：星际旅人</span>
+                        <span>|</span>
+                        <span>科幻</span>
+                        <span>|</span>
+                        <span>连载中</span>
+                    </div>
+                    <div class="mt-6 flex gap-4">
+                        <button class="bg-primary hover:bg-primary/90 px-6 py-2 rounded-full transition-colors">开始阅读</button>
+                        <button class="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-6 py-2 rounded-full transition-colors">加入书架</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/a50afc11fd7e4f8a9b8fa1a35c6a1e7d~tplv-a9rns2rl98-image.image?rcl=2025082109082412874FB73E4A860C3D5C&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1756343308&amp;x-signature=9III5thuXu58YcBghzFd46XXuOo%3D" alt="星河漫游者小说封面" class="rounded-lg shadow-2xl max-h-[400px] md:max-h-[500px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门小说 -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">热门小说</h2>
+                <a href="#" class="text-primary hover:underline flex items-center gap-1">
+                    更多 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- 小说卡片 1 -->
+                <div class="card-hover bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/novel2/300/450" alt="都市之逆袭人生小说封面" class="w-full aspect-[2/3] object-cover">
+                        <span class="absolute top-2 right-2 bg-secondary text-white text-xs px-2 py-1 rounded">都市</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold line-clamp-1">都市之逆袭人生</h3>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-1">作者：都市传说</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-500 text-sm"><i class="fa fa-star"></i> 4.8</span>
+                            <span class="text-gray-400 text-xs">连载中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 小说卡片 2-6 结构相同，略 -->
+                <div class="card-hover bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://p3-search.byteimg.com/obj/labis/f7de6e7a11906e4e1b8232150e4efc3c" alt="玄幻小说封面" class="w-full aspect-[2/3] object-cover">
+                        <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded">玄幻</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold line-clamp-1">万道独尊</h3>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-1">作者：剑指苍穹</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-500 text-sm"><i class="fa fa-star"></i> 4.9</span>
+                            <span class="text-gray-400 text-xs">连载中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 重复类似卡片 -->
+                <div class="card-hover bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://p3-search.byteimg.com/obj/tos-cn-i-qvj2lq49k0/3f01fca8e194450ea658f1d1db92426c" alt="穿越小说封面" class="w-full aspect-[2/3] object-cover">
+                        <span class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">穿越</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold line-clamp-1">回到明朝当王爷</h3>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-1">作者：历史迷</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-500 text-sm"><i class="fa fa-star"></i> 4.7</span>
+                            <span class="text-gray-400 text-xs">已完结</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/novel5/300/450" alt="悬疑小说封面" class="w-full aspect-[2/3] object-cover">
+                        <span class="absolute top-2 right-2 bg-gray-700 text-white text-xs px-2 py-1 rounded">悬疑</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold line-clamp-1">深夜奇谈</h3>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-1">作者：夜行人</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-500 text-sm"><i class="fa fa-star"></i> 4.6</span>
+                            <span class="text-gray-400 text-xs">连载中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/novel6/300/450" alt="科幻小说封面" class="w-full aspect-[2/3] object-cover">
+                        <span class="absolute top-2 right-2 bg-purple-500 text-white text-xs px-2 py-1 rounded">科幻</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold line-clamp-1">人工智能纪元</h3>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-1">作者：未来可期</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-500 text-sm"><i class="fa fa-star"></i> 4.8</span>
+                            <span class="text-gray-400 text-xs">连载中</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/novel7/300/450" alt="言情小说封面" class="w-full aspect-[2/3] object-cover">
+                        <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs px-2 py-1 rounded">言情</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold line-clamp-1">夏日遇见你</h3>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-1">作者：心动瞬间</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-500 text-sm"><i class="fa fa-star"></i> 4.5</span>
+                            <span class="text-gray-400 text-xs">已完结</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新更新 -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8">最新更新</h2>
+
+            <div class="space-y-4">
+                <!-- 更新条目 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-semibold">《星河漫游者》</h3>
+                        <p class="text-gray-500 text-sm mt-1">第128章：黑洞边缘的秘密</p>
+                    </div>
+                    <div class="mt-3 md:mt-0 flex items-center gap-4">
+                        <span class="text-gray-400 text-sm">2小时前更新</span>
+                        <button class="text-primary hover:text-primary/80 text-sm">阅读最新章节</button>
+                    </div>
+                </div>
+
+                <!-- 更新条目 2-5 结构相同，略 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-semibold">《万道独尊》</h3>
+                        <p class="text-gray-500 text-sm mt-1">第342章：剑破九霄</p>
+                    </div>
+                    <div class="mt-3 md:mt-0 flex items-center gap-4">
+                        <span class="text-gray-400 text-sm">5小时前更新</span>
+                        <button class="text-primary hover:text-primary/80 text-sm">阅读最新章节</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-semibold">《都市之逆袭人生》</h3>
+                        <p class="text-gray-500 text-sm mt-1">第186章：商业帝国</p>
+                    </div>
+                    <div class="mt-3 md:mt-0 flex items-center gap-4">
+                        <span class="text-gray-400 text-sm">昨天 20:30 更新</span>
+                        <button class="text-primary hover:text-primary/80 text-sm">阅读最新章节</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="bg-dark text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-book text-primary text-2xl"></i>
+                        <span class="text-xl font-bold text-white">星辰小说网</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">专注原创文学创作与分享，打造优质阅读体验</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fa fa-weibo"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fa fa-wechat"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-primary"><i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">分类浏览</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">排行榜</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">作家专区</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">帮助中心</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-primary transition-colors">用户指南</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">版权声明</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">联系我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">隐私政策</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">订阅更新</h3>
+                    <p class="text-gray-400 text-sm mb-4">获取最新小说更新通知</p>
+                    <div class="flex">
+                        <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 rounded-l-md w-full text-gray-800 focus:outline-none">
+                        <button class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-md transition-colors">
+                            订阅
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>© 2023 星辰小说网 版权所有 | 本站内容均为原创，未经授权不得转载</p>
+                <p class="mt-2">抵制不良小说，拒绝盗版内容，支持原创文学</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+    </script>
+
+
+</body></html>

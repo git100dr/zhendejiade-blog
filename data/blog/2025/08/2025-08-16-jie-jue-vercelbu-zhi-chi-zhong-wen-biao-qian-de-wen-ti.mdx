@@ -16,10 +16,11 @@ summary:
 1. 网上有博主说[vercel不支持中文标签](https://blog.csdn.net/yys365/article/details/145565026)，不如都换成英文标签，无解！!
 
 2. 查找分析原因：比较本地和vercel部署日志，发现：
-   - URL编码问题没问题：日志显示本地和vercel部署中标签URL编码都是正确的。
-     ![本地标签URL编码](/static/images/local-tags-capture.png)
-     ![Vercel标签URL编码](/static/images/vercel-tag-capture.png)
-   - 标签过滤逻辑问题：vercel采用了URL编码后的tag查询匹配Next-js自动生成的标签列表（未编码的tag），两者不一致导致无法匹配上中文标签的blog。
+
+- URL编码问题没问题：日志显示本地和vercel部署中标签URL编码都是正确的。
+  ![本地标签URL编码](/static/images/local-tags-capture.png)
+  ![Vercel标签URL编码](/static/images/vercel-tag-capture.png)
+- 标签过滤逻辑问题：vercel采用了URL编码后的tag查询匹配Next-js自动生成的标签列表（未编码的tag），两者不一致导致无法匹配上中文标签的blog。
 
 **解决方法**
 
